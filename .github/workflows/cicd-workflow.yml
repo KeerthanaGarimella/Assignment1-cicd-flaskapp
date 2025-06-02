@@ -2,36 +2,47 @@ name: CI-CD-Pipeline-Keerthana
 
 on:
   pull_request:
+    branches: ['keerthana-8985513']
 
 jobs:
-  build-test-container:
+  build-and-test:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: app
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        pip install -r app/requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          pip install pytest
 
-    - name: Run test cases
-      run: |
-        pytest app/test_app.py
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          pytest test_app.py
 
-    - name: Build Docker image
-      run: docker build -t flask-ci-cd .
+      - name: Build Docker image
+        run: docker build -t flask-app .
 
-    - name: Run Docker container
-      run: docker run -d -p 5000:5000 --name flask-container flask-ci-cd
+      - name: Run Docker container
+        run: docker run -d --name flask-app-test -p 5000:5000 flask-app
 
-    - name: Show running container
-      run: docker ps
+      - name: Show running Docker containers
+        run: docker ps
 
-    - name: Stop Docker container
-      run: docker stop flask-container
+      - name: Stop and remove Docker container
+        run: |
+          docker stop flask-app-test
+          docker rm flask-app-test
