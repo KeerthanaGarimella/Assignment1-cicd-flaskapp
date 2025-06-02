@@ -33,9 +33,11 @@ jobs:
           pytest test_app.py
 
       - name: Build Docker image
+        working-directory: ${{ github.workspace }}
         run: docker build -t flask-app .
 
       - name: Run Docker container
+        working-directory: ${{ github.workspace }}
         run: docker run -d --name flask-app-test -p 5000:5000 flask-app
 
       - name: Show running Docker containers
