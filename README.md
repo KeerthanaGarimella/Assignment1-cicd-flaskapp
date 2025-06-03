@@ -1,7 +1,8 @@
+notepad README.md
 # Assignment1-cicd-flaskapp
 # CI/CD Assignment - Python Flask App
 
-## 👩‍💻 Technology Used
+## Technology Used
 - Python 3.11
 - Flask
 - Pytest
@@ -19,7 +20,7 @@
 ## 📝 Steps Followed
 - Created # CI/CD Assignment - Python Flask App
 
-## 👩‍💻 Technology Used
+##  Technology Used
 - Python 3.11
 - Flask
 - Pytest
@@ -34,8 +35,8 @@
 5. **Show**: Display running container
 6. **Stop**: Stop the container
 
-## 📝 Steps Followed
-- Created `keerthana-8985513` feature branch
+##  Steps Followed
+- Created `keerthana-89855132` feature branch
 - Added a basic Flask app
 - Wrote Dockerfile to containerize the app
 - Wrote 3 pytest cases
@@ -45,3 +46,17 @@
 - Wrote Dockerfile to containerize the app
 - Wrote 3 pytest cases
 - Created GitHub Actions workflow triggered by Pull Requests
+
+## 📸 Screenshots
+
+### ✅ GitHub Actions Workflow Success
+![CI Passed](## 📸 Screenshots
+
+### ✅ GitHub Actions Workflow Success
+![CI Passed](C:\Users\keert\Downloads\cicd-flaskapp\Assignment1-cicd-flaskapp\screenshots\total jobs.png)
+
+### ✅ Docker Container Running
+![Docker Running](C:\Users\keert\Downloads\cicd-flaskapp\Assignment1-cicd-flaskapp\screenshots\dockerbuild.png)
+
+### ✅ Pull Request with Checks
+![PR Checks](C:\Users\keert\Downloads\cicd-flaskapp\Assignment1-cicd-flaskapp\screenshots\pullrequest.png)
